@@ -1,0 +1,15 @@
+[project]
+name = "copy_and_template"
+version = "0.1.0"
+description = "TOML 設定でファイルコピーと zip 化"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "tomli",
+    "jinja2",
+    "pytest>=9.0.2",
+    "pyminizip>=0.2.6",
+]
+
+[project.scripts]
+copy_and_template = "main:main"

@@ -1,0 +1,5 @@
+timestamp,operation,source,destination
+2025-12-18T22:56:06.588409,copy,yuma_noguchi\foobar.txt,abc\renamed_foobar.txt
+2025-12-18T22:56:06.588409,copy,yuma_noguchi\foobar2.txt,abc\1\renamed_foobar2.txt
+2025-12-18T22:56:06.602376,zip,abc\renamed_foobar.txt,renamed_foobar.txt
+2025-12-18T22:56:06.603377,zip,abc\1\renamed_foobar2.txt,1\renamed_foobar2.txt
