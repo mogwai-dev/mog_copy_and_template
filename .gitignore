@@ -1,3 +1,25 @@
+# Python環境
 .venv
-__pycache__
+venv/
+env/
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# ログファイル
+*.log
+operation_*.log
+
+# CSV・データファイル
 *.csv
+
+# IDEの設定
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
