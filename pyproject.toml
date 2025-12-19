@@ -13,3 +13,6 @@ dependencies = [
 
 [project.scripts]
 copy_and_template = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]

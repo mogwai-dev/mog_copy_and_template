@@ -145,24 +145,21 @@ def main():
     parser = argparse.ArgumentParser(description="TOML指示でファイルコピー・zip化するツール")
     parser.add_argument("config", help="設定TOMLファイルのパス")
     parser.add_argument("--quiet", action="store_true", help="出力を最小限にする")
-    parser.add_argument("--log", help="操作ログをCSVファイルに保存（タイムスタンプ付き、複数回実行対応）")
+    parser.add_argument("--log", default="operation.log", help="操作ログをCSVファイルに保存（デフォルト: operation.log、タイムスタンプ付き、複数回実行対応）")
     args = parser.parse_args()
 
     toml_path = args.config
     base_dir = Path(toml_path).parent
     
     # ログパス生成（タイムスタンプ付きで重複回避）
-    log_path = None
-    if args.log:
-        log_base = Path(args.log)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        log_path = log_base.parent / f"{log_base.stem}_{timestamp}{log_base.suffix}"
+    log_base = Path(args.log)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_path = log_base.parent / f"{log_base.stem}_{timestamp}{log_base.suffix}" if log_base.parent == Path('.') else base_dir / f"{log_base.stem}_{timestamp}{log_base.suffix}"
     
     try:
         config = load_toml(toml_path)
         process_files(config, base_dir, verbose=not args.quiet, log_path=log_path)
-        if log_path:
-            print(f"Log saved: {log_path}")
+        print(f"Log saved: {log_path}")
     except FileNotFoundError:
         print(f"Error: TOML file not found: {toml_path}")
         sys.exit(1)
